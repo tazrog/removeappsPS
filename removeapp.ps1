@@ -1,3 +1,6 @@
+# Privacy Script for Windows 10 in PowerShell
+# Written by R Scharmen
+
 # Remove unwanted Apps
 Get-AppxPackage *windowsalarms* | Remove-AppxPackage
 Get-AppxPackage *windowscommunicationsapps* | Remove-AppxPackage
@@ -27,6 +30,7 @@ $value = "0"
 Set-ItemProperty -Path $registryPath -Name $name -Value $value 
 Get-ItemProperty -Path $registryPath -Name AllowCortana
 
+#Change ConnectedUserExperiance in Services
 Set-Service -Name "DiagTrack" -StartupType Disabled
 Get-Service DiagTrack | Select-Object Name, StartType, Status
 
@@ -34,8 +38,8 @@ Get-Service DiagTrack | Select-Object Name, StartType, Status
 # SIG # Begin signature block
 # MIIFpQYJKoZIhvcNAQcCoIIFljCCBZICAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUsHHqAV95Qzzn4jjDT9RH/eNR
-# MWOgggM5MIIDNTCCAh2gAwIBAgIQV6OviSVWMKBHtppVKJc2sDANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUvlz50izsT7k4KBb6R4Zx6Dk7
+# Jo2gggM5MIIDNTCCAh2gAwIBAgIQV6OviSVWMKBHtppVKJc2sDANBgkqhkiG9w0B
 # AQsFADAhMR8wHQYDVQQDDBZyb2dlci5zY2hhcm1AZ21haWwuY29tMB4XDTE5MDIx
 # NjE2NTA1NFoXDTIwMDIxNjE3MTA1NFowITEfMB0GA1UEAwwWcm9nZXIuc2NoYXJt
 # QGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN6JTVgA
@@ -56,11 +60,11 @@ Get-Service DiagTrack | Select-Object Name, StartType, Status
 # Y2hhcm1AZ21haWwuY29tAhBXo6+JJVYwoEe2mlUolzawMAkGBSsOAwIaBQCgeDAY
 # BgorBgEEAYI3AgEMMQowCKACgAChAoAAMBkGCSqGSIb3DQEJAzEMBgorBgEEAYI3
 # AgEEMBwGCisGAQQBgjcCAQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3DQEJBDEW
-# BBTkHdSGg9/R/wxeegF+t3PcgaIcYjANBgkqhkiG9w0BAQEFAASCAQADVaA5KL/A
-# RVWq7jvDv1HvWuZbHvB2G15jUYAKHveK3as6oAq732Jm6m0+qZAxvJ8EU6CpdreN
-# 2q7uV+6G6TODvB1r5MGA8S7WI405337lGswgCEkV51cisYdIAJdOmKRWgmEGKVQM
-# Gz6UME1DJr4XdPBknsuEkgy368gLItQhSGFoFdLoJ8//ZfS1jDPf0CRcQkuEybRW
-# hH5+QSAJSPS2tm6bd4QG5C8gMk3flTWmRErN0YQFyMsYEgpagB8lcIyhjrzWd4Fu
-# VeLdCIUZX1bWQfQQYD9dm7r+aonA2n+ra6dW3M2qBzb8tknGnPU6oAM00Zs57Ta9
-# MM86cfRAJ7go
+# BBTXlD/B5lZjbmBZYGkwa7l92meIpjANBgkqhkiG9w0BAQEFAASCAQDKA07dLbrN
+# ZjG4zzi7AYbsCFKc6n4jpLGAVh/GPQfoxWDt+vdYdGzhYH64zKnbtgFPYlkIh0lg
+# EOX0k3D3vaUejVwJLTq2gP62gI6u38T/sDCtMptqnIhR0saVCCG/Xsq6bixCTREu
+# wjD9VFBbgHXJb9vOm9ycNbJHryLKCEWhzu65rNJyjMd3XhTMLTTjyItspbD98AiR
+# dTaTujCKFluJP4aOsUVumVJ0+vFCAoX7HCQJrJ/RsujxHADP8FYXWrkxfy+t9XV1
+# JQE8QhrfHT4JgnfTSsRpP7iv3aen+/Yq3G/Peruw3wrF/sKkFMhsO5dWOSjWRkh9
+# xbxBL/iOA5NY
 # SIG # End signature block
