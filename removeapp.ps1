@@ -19,7 +19,13 @@ Get-AppxPackage *messaging* | Remove-AppxPackage
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"
 $Name = "AllowTelemetry"
 $value = "0"
-
+if (!(Test-Path -Path $registryPath)){
+    New-ItemProperty -Path $registryPath -Name $name -Value $value 
+}
+else { 
+    Set-ItemProperty -Path $registryPath -Name $name -Value $value
+     }
+    
 Set-ItemProperty -Path $registryPath -Name $name -Value $value 
 Get-ItemProperty -Path $registryPath -Name AllowTelemetry
 
@@ -44,8 +50,8 @@ Get-Service DiagTrack | Select-Object Name, StartType, Status
 # SIG # Begin signature block
 # MIIFpQYJKoZIhvcNAQcCoIIFljCCBZICAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUE8UL6/iLC9/DgbZTJJFlpWVw
-# P+ygggM5MIIDNTCCAh2gAwIBAgIQV6OviSVWMKBHtppVKJc2sDANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUEz5lqmnhddbDs+ok8JFbG7ho
+# l8WgggM5MIIDNTCCAh2gAwIBAgIQV6OviSVWMKBHtppVKJc2sDANBgkqhkiG9w0B
 # AQsFADAhMR8wHQYDVQQDDBZyb2dlci5zY2hhcm1AZ21haWwuY29tMB4XDTE5MDIx
 # NjE2NTA1NFoXDTIwMDIxNjE3MTA1NFowITEfMB0GA1UEAwwWcm9nZXIuc2NoYXJt
 # QGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN6JTVgA
@@ -66,11 +72,11 @@ Get-Service DiagTrack | Select-Object Name, StartType, Status
 # Y2hhcm1AZ21haWwuY29tAhBXo6+JJVYwoEe2mlUolzawMAkGBSsOAwIaBQCgeDAY
 # BgorBgEEAYI3AgEMMQowCKACgAChAoAAMBkGCSqGSIb3DQEJAzEMBgorBgEEAYI3
 # AgEEMBwGCisGAQQBgjcCAQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3DQEJBDEW
-# BBRURxdDpn1RkISoEL5fdzqV2DC2ZjANBgkqhkiG9w0BAQEFAASCAQB+Xpk0oV+i
-# b2jgrJPau1SNk/WnjJKhC4BdOaXGzIsDMArShazRI4N1aojyO5ueMQZV+ahkWjnv
-# E2oZos+4vLAq29p+iWcFlEm8YOHRVRS7Odtp1m2YaFg403ZPWjfBIuAxAvgyEeZW
-# URL19TPyStQjPNDQns28qN12O8OII7UL10yetHyqTgEXqmdj4Bs5phmHjJgVkt8S
-# mgKIbVZtO5eXDPlj1dPSEZWWafbaLt+/wc7nnYguFzL0TvYjh8zdp3z+iYwQuKQ2
-# qOiAaHxRvGeiktH8RLcH3ALqUupESookxtfv3c3LFVi0UiyYANPj8JIydKUDpoCW
-# fdXD0r38uOkU
+# BBSfyBco+oApVgG8kawVBcruQmt2LTANBgkqhkiG9w0BAQEFAASCAQC6xpDdrgTq
+# zSUyRZvhQvEukm65ZqENID4OmzdljSOLRV1Zi7YiT+tCFTifZ5lt68dTWX2i6VFW
+# Z4jQXlhQ8mvilEoW/JsrLAuQEqyE1jmJmnSORP8j08pYcwsW6xzFhK5oDSc/A0Hl
+# IQ5OLA9LwCSmaqDBJJAzZ3nUlpdrnTtZ+oBD2esSlOlwVnDY8e9SZwYF7++fxoRD
+# 2rgOmIgqhV0r/BPuisCAGipqAT7kj0pCPq2TP9Gsv2heQ4fK7xNhnwxJcpazo4Fq
+# 4kKKby6Q8J0nV+JZjCAojhrdXtYO9n1o3KEQQKE+BZ1aPCw/svQk5CWV1GkDGWzx
+# qjC4mOwOZEnn
 # SIG # End signature block
