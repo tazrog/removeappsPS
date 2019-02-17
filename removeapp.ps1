@@ -26,8 +26,11 @@ Get-ItemProperty -Path $registryPath -Name AllowTelemetry
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
 $Name = "AllowCortana"
 $value = "0"
+if (!(Test-Path -Path $registryPath)){
+New-ItemProperty -Path $registryPath -Name $name -Value $value 
+}
+else { Set-ItemProperty -Path $registryPath -Name $name -Value $value}
 
-Set-ItemProperty -Path $registryPath -Name $name -Value $value 
 Get-ItemProperty -Path $registryPath -Name AllowCortana
 
 #Change ConnectedUserExperiance in Services
@@ -38,8 +41,8 @@ Get-Service DiagTrack | Select-Object Name, StartType, Status
 # SIG # Begin signature block
 # MIIFpQYJKoZIhvcNAQcCoIIFljCCBZICAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUvlz50izsT7k4KBb6R4Zx6Dk7
-# Jo2gggM5MIIDNTCCAh2gAwIBAgIQV6OviSVWMKBHtppVKJc2sDANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUVSFCu5YrpXsgwCxvywTskENO
+# 2TKgggM5MIIDNTCCAh2gAwIBAgIQV6OviSVWMKBHtppVKJc2sDANBgkqhkiG9w0B
 # AQsFADAhMR8wHQYDVQQDDBZyb2dlci5zY2hhcm1AZ21haWwuY29tMB4XDTE5MDIx
 # NjE2NTA1NFoXDTIwMDIxNjE3MTA1NFowITEfMB0GA1UEAwwWcm9nZXIuc2NoYXJt
 # QGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN6JTVgA
@@ -60,11 +63,11 @@ Get-Service DiagTrack | Select-Object Name, StartType, Status
 # Y2hhcm1AZ21haWwuY29tAhBXo6+JJVYwoEe2mlUolzawMAkGBSsOAwIaBQCgeDAY
 # BgorBgEEAYI3AgEMMQowCKACgAChAoAAMBkGCSqGSIb3DQEJAzEMBgorBgEEAYI3
 # AgEEMBwGCisGAQQBgjcCAQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3DQEJBDEW
-# BBTXlD/B5lZjbmBZYGkwa7l92meIpjANBgkqhkiG9w0BAQEFAASCAQDKA07dLbrN
-# ZjG4zzi7AYbsCFKc6n4jpLGAVh/GPQfoxWDt+vdYdGzhYH64zKnbtgFPYlkIh0lg
-# EOX0k3D3vaUejVwJLTq2gP62gI6u38T/sDCtMptqnIhR0saVCCG/Xsq6bixCTREu
-# wjD9VFBbgHXJb9vOm9ycNbJHryLKCEWhzu65rNJyjMd3XhTMLTTjyItspbD98AiR
-# dTaTujCKFluJP4aOsUVumVJ0+vFCAoX7HCQJrJ/RsujxHADP8FYXWrkxfy+t9XV1
-# JQE8QhrfHT4JgnfTSsRpP7iv3aen+/Yq3G/Peruw3wrF/sKkFMhsO5dWOSjWRkh9
-# xbxBL/iOA5NY
+# BBScLVGoDIAlnlbs6iRwKeQgTqlWbzANBgkqhkiG9w0BAQEFAASCAQDM5hhpgmoo
+# r/GKD/zHnSQ/p/5j0IVDPZtciarsAWTgP5ZkVx32O6vpD1lP4fgE1bozKmjhI6Ba
+# y/czo1usLgaj7D/q6djcpA0+UFpnljp7/Mn+dExjwMOfkwgR7YxcVrIFwDYj49ad
+# xdaq39d9qIgMy7+hvsEWNIWc+to61bnepsQj8IICK9t3vtp/nqHGst7zpaN2GDYK
+# eaLTo4QSTn02Wi7ctb+1S0FG/Qll1dkg97kfNd6ydyNXBBFprAM4OJM+4kl0oP3r
+# TctvilZNggoA8TLW5j96ooSTHVySqrcCAI+rImf7U63jyEAswycAfUXa7PnIWAQY
+# Q3iktUOb4jke
 # SIG # End signature block
