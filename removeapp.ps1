@@ -15,12 +15,13 @@ Get-AppxPackage *stickynotes* | Remove-AppxPackage
 Get-AppxPackage *gethelp* | Remove-AppxPackage
 Get-AppxPackage *messaging* | Remove-AppxPackage
 
+
 #Set Registry
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"
 $Name = "AllowTelemetry"
 $value = "0"
 if (!(Test-Path -Path $registryPath)){
-    New-ItemProperty -Path $registryPath -Name $name -Value $value 
+    New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType "Dword"
 }
 else { 
     Set-ItemProperty -Path $registryPath -Name $name -Value $value
@@ -34,7 +35,8 @@ $Name = "AllowCortana"
 $value = "0"
 if (!(Test-Path -Path $registryPath)){
     mkdir "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
-    New-ItemProperty -Path $registryPath -Name $name -Value $value 
+    New-ItemProperty -Path $registryPath  -Name $name -Value $value -PropertyType "Dword"
+    
 }
 else { 
     Set-ItemProperty -Path $registryPath -Name $name -Value $value
@@ -50,8 +52,8 @@ Get-Service DiagTrack | Select-Object Name, StartType, Status
 # SIG # Begin signature block
 # MIIFpQYJKoZIhvcNAQcCoIIFljCCBZICAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUEz5lqmnhddbDs+ok8JFbG7ho
-# l8WgggM5MIIDNTCCAh2gAwIBAgIQV6OviSVWMKBHtppVKJc2sDANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUrWHa99V4kEtWUWb1bTwr3Y9X
+# j8agggM5MIIDNTCCAh2gAwIBAgIQV6OviSVWMKBHtppVKJc2sDANBgkqhkiG9w0B
 # AQsFADAhMR8wHQYDVQQDDBZyb2dlci5zY2hhcm1AZ21haWwuY29tMB4XDTE5MDIx
 # NjE2NTA1NFoXDTIwMDIxNjE3MTA1NFowITEfMB0GA1UEAwwWcm9nZXIuc2NoYXJt
 # QGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN6JTVgA
@@ -72,11 +74,11 @@ Get-Service DiagTrack | Select-Object Name, StartType, Status
 # Y2hhcm1AZ21haWwuY29tAhBXo6+JJVYwoEe2mlUolzawMAkGBSsOAwIaBQCgeDAY
 # BgorBgEEAYI3AgEMMQowCKACgAChAoAAMBkGCSqGSIb3DQEJAzEMBgorBgEEAYI3
 # AgEEMBwGCisGAQQBgjcCAQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3DQEJBDEW
-# BBSfyBco+oApVgG8kawVBcruQmt2LTANBgkqhkiG9w0BAQEFAASCAQC6xpDdrgTq
-# zSUyRZvhQvEukm65ZqENID4OmzdljSOLRV1Zi7YiT+tCFTifZ5lt68dTWX2i6VFW
-# Z4jQXlhQ8mvilEoW/JsrLAuQEqyE1jmJmnSORP8j08pYcwsW6xzFhK5oDSc/A0Hl
-# IQ5OLA9LwCSmaqDBJJAzZ3nUlpdrnTtZ+oBD2esSlOlwVnDY8e9SZwYF7++fxoRD
-# 2rgOmIgqhV0r/BPuisCAGipqAT7kj0pCPq2TP9Gsv2heQ4fK7xNhnwxJcpazo4Fq
-# 4kKKby6Q8J0nV+JZjCAojhrdXtYO9n1o3KEQQKE+BZ1aPCw/svQk5CWV1GkDGWzx
-# qjC4mOwOZEnn
+# BBSBTb8IyBz0WRAGqBtqzWtD88iXQzANBgkqhkiG9w0BAQEFAASCAQAEJsYatyyf
+# AZfqQpsEnwtfl/J4ACUJ7Ki+6EwiAOnW+n/b9GvtJN7Y5WM2h2eePK7l4FcE/c3m
+# zNPt7wuv04IH36clNU9j/hiN9Fg46KenAYzBr4IhUNpKe9LAZuoSryQVo19dG56B
+# PduI5S5D/F5yN1EFH+CXzPzrv0UBVRX3AEE3U9/7ORhvDNR14e5PjVzUROVsGyDW
+# TYUYaF71+lqQmix6cG3NwcUHeFt6+K545JfeO6AWREPcQwsw18Exaa9KIdLGjbde
+# g9hpSuxUUKnvRAnA5kj7FX2s+cTIVWA49EatGzclVT1Ntuycfy8goR1iyXeo1GWR
+# piOUcLPN1cbe
 # SIG # End signature block
